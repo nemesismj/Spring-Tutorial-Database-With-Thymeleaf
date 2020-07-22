@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Manage</title>
+</head>
+<body>
+<div align="center">
+    <h1>Item List</h1>
+    <a href="new">Create New Item</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made In</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${listItems}">
+            	<td th:text="${item.id}">Item ID</td>
+                <td th:text="${item.name}">Name</td>
+                <td th:text="${item.brand}">Brand</td>
+                <td th:text="${item.madein}">Made in</td>
+                <td th:text="${item.price}">Price</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${item.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${item.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="#" th:action="@{/logout}" method="post">
+        <input type="submit" value="Log out" style="width: 15%;background-color: #4CAF50;  color: white;padding: 14px 20px;margin: 8px 0;border: none;" />
+    </form>
+</div>
+
+
+</body>
+</html>
